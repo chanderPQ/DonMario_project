@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.main__mantenimiento{
+	display: flex;
+	flex-direction: column;
+	row-gap:7px;
+}
+.iniciar__main{
+	min-height:80vh;
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	justify-content:center;
+}
+.mantenimiento-sign{
+	display: flex;
+	flex-direction: column;
+	row-gap:7px;
+	width:20%;
+}
+.mantenimiento-sign p{
+	text-align: center;
+}
