@@ -5,6 +5,9 @@
 <c:if test="${sessionScope.load==null}">
 <c:set var="load" value="1" scope="session"/>
 <jsp:forward page="ServletDistrito"/>
+</c:if>
+<c:if test="${sessionScope.loadEmpleado==null }">
+<c:set var="loadEmpleado" value="1" scope="session"/>
 <jsp:forward page="ServletEmpleado"/>
 </c:if>
 <!DOCTYPE html>
