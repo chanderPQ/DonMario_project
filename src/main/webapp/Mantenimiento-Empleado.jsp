@@ -26,9 +26,9 @@
 
 <input type="text" 
 <c:if test="${sessionScope.empleados.size() == null}">
-value="EMP00"</c:if>
+value="EMP001"</c:if>
 <c:if test="${sessionScope.empleados.size() != null}">
-value="EMP0${sessionScope.empleados.size()}"
+value="EMP00${sessionScope.empleados.size()+1}"
 </c:if>
  name="empleado_id" placeholder="ingrese el nombre del empleado" readonly>
 

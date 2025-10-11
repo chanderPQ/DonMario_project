@@ -24,9 +24,9 @@
 
 <input type="text" 
 <c:if test="${sessionScope.mesas.size() == null}">
-value="MES00"</c:if>
+value="MES001"</c:if>
 <c:if test="${sessionScope.mesas.size() != null}">
-value="MES0${sessionScope.mesas.size()}"
+value="MES00${sessionScope.mesas.size()+1}"
 </c:if>
  name="mesa_id" placeholder="ingrese el nombre del mesa" readonly>
 

@@ -23,15 +23,15 @@
 
 <input type="text" 
 <c:if test="${sessionScope.menus.size() == null}">
-value="MEN00"</c:if>
+value="MEN001"</c:if>
 <c:if test="${sessionScope.menus.size() != null}">
-value="MEN0${sessionScope.menus.size()}"
+value="MEN00${sessionScope.menus.size()+1}"
 </c:if>
  name="menu_id" placeholder="ingrese el nombre del menu" readonly>
 
 
 
-<input type="hidden" name="empleado_id" value="EMP00">
+<input type="hidden" name="empleado_id" value="EMP001">
 <label>Nombre del menu</label>
 <input type="text" name="nombre" placeholder="ingrese el nombre del plato">
 <label>Costo</label>

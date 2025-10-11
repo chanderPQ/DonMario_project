@@ -22,9 +22,9 @@
 <label>nombre del distrito</label>
 <input type="text" 
 <c:if test="${sessionScope.distritos.size() == null}">
-value="DIS00"</c:if>
+value="DIS001"</c:if>
 <c:if test="${sessionScope.distritos.size() != null}">
-value="DIS0${sessionScope.distritos.size()}"
+value="DIS00${sessionScope.distritos.size()+1}"
 </c:if>
  name="distrito_id" placeholder="ingrese el nombre del distrito" readonly>
 
