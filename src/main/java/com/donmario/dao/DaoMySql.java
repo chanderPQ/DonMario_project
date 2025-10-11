@@ -3,9 +3,11 @@ package com.donmario.dao;
 import com.donmario.interfaces.InterfaceDistrito;
 import com.donmario.interfaces.InterfaceEmpleado;
 import com.donmario.interfaces.InterfaceMenu;
+import com.donmario.interfaces.InterfaceMesa;
 import com.donmario.models.ModelDistrito;
 import com.donmario.models.ModelEmpleado;
 import com.donmario.models.ModelMenu;
+import com.donmario.models.ModelMesa;
 
 public class DaoMySql extends DaoFactory {
 
@@ -25,6 +27,12 @@ public InterfaceDistrito getDistrito() {
 public InterfaceEmpleado getEmpleado() {
 	// TODO Auto-generated method stub
 	return new ModelEmpleado(DaoFactory.MYSQL);
+}
+
+@Override
+public InterfaceMesa getMesa() {
+	// TODO Auto-generated method stub
+	return new ModelMesa(DaoFactory.MYSQL);
 }
 
 }
