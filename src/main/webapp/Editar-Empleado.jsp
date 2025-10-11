@@ -18,7 +18,8 @@
 <main style="padding:20px">
 <form class="main__mantenimiento" action="ServletEmpleado" method="post" >
 <p>Informacion personal</p>
-<input type="text" name="empleado_id" value="${empleado.empleado_id }" > 
+<label>Empleado ID</label>
+<input type="text" name="empleado_id" value="${empleado.empleado_id }" readonly> 
 <label>nombre</label>
 <input type="text" placeholder="nombre completo" name="nombre" value="${empleado.nombre }" >
 <label>apellido</label>

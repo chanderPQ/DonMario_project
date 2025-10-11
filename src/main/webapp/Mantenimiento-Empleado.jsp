@@ -22,6 +22,17 @@
 <main style="padding:20px;">
 <form class="main__mantenimiento" action="ServletEmpleado" method="post" >
 <p>Informacion personal</p>
+<label>Empleado ID</label>
+
+<input type="text" 
+<c:if test="${sessionScope.empleados.size() == null}">
+value="EMP00"</c:if>
+<c:if test="${sessionScope.empleados.size() != null}">
+value="EMP0${sessionScope.empleados.size()}"
+</c:if>
+ name="empleado_id" placeholder="ingrese el nombre del empleado" readonly>
+
+
 <label>nombre</label>
 <input type="text" placeholder="nombre completo" name="nombre" >
 <label>apellido</label>
@@ -50,6 +61,7 @@
 <br>
 <table class="table table-striped table-hover">
 <tr>
+<td class="table-dark">Empleado ID</td>
 <td class="table-dark">rol</td>
 <td class="table-dark">nombre</td>
 <td class="table-dark">apellido</td>
@@ -60,6 +72,7 @@
 </tr>
 <c:forEach items="${sessionScope.empleados}" var="empleado" >
 <tr>
+<td>${empleado.empleado_id}</td>
 <td>${empleado.rol}</td>
 <td>${empleado.nombre}</td>
 <td>${empleado.apellido}</td>

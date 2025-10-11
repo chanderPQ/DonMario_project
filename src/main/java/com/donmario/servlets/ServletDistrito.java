@@ -56,7 +56,7 @@ public class ServletDistrito extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 		EntityDistrito ed = new EntityDistrito();
-		ed.setDistrito(Integer.parseInt(request.getParameter("distrito_id")));
+		ed.setDistrito((request.getParameter("distrito_id")));
 		ed.setNombre(request.getParameter("nombre"));
 		InterfaceDistrito id = fabrica.getDistrito();
 		id.actualizarDistrito(ed);
@@ -70,7 +70,7 @@ public class ServletDistrito extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 		InterfaceDistrito id = fabrica.getDistrito();
-		EntityDistrito ed =  id.editarDistrito(Integer.parseInt(request.getParameter("idEditar")));
+		EntityDistrito ed =  id.editarDistrito((request.getParameter("idEditar")));
 		request.setAttribute("distrito", ed);
 		request.getRequestDispatcher("Editar-Distrito.jsp").forward(request, response);
 		}catch(Exception e) {
@@ -82,7 +82,7 @@ public class ServletDistrito extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			InterfaceDistrito id = fabrica.getDistrito();
-			id.eliminarDistrito(Integer.parseInt(request.getParameter("idEliminar")));
+			id.eliminarDistrito((request.getParameter("idEliminar")));
 			listarDistrito(request,response);
 		}
 		catch(Exception e) {
@@ -108,9 +108,11 @@ public class ServletDistrito extends HttpServlet {
 		// TODO Auto-generated method stub
 		EntityDistrito ed = new EntityDistrito();
 		ed.setNombre(request.getParameter("nombre"));
+		ed.setDistrito(request.getParameter("distrito_id"));
 		InterfaceDistrito id = fabrica.getDistrito();
 		id.crearDistrito(ed);
 		listarDistrito(request,response);
+		System.out.print(ed.getNombre()+ed.getDistrito_id());
 	}
 
 }

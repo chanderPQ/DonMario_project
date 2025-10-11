@@ -53,7 +53,7 @@ public class ServletEmpleado extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 		InterfaceEmpleado ie = fabrica.getEmpleado();
-		EntityEmpleado ee = ie.editarEmpleado(Integer.parseInt(request.getParameter("idEditar")));
+		EntityEmpleado ee = ie.editarEmpleado((request.getParameter("idEditar")));
 		request.setAttribute("empleado", ee);
 		request.getRequestDispatcher("Editar-Empleado.jsp").forward(request, response);
 	}catch(Exception e) {
@@ -65,8 +65,7 @@ public class ServletEmpleado extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 		InterfaceEmpleado ie = fabrica.getEmpleado();
-		int idEliminar = Integer.parseInt(request.getParameter("idEliminar"));
-		ie.eliminarEmpleado(idEliminar);
+		ie.eliminarEmpleado(request.getParameter("idEliminar"));
 		recuperar(request,response);
 		}catch(Exception e) {
 			System.out.print("hubo un problema con ServletEmpleado.eliminar()");
@@ -80,9 +79,9 @@ public class ServletEmpleado extends HttpServlet {
 		ee.setApellido(request.getParameter("apellido"));
 		ee.setRol(request.getParameter("rol"));
 		ee.setCorreo(request.getParameter("correo"));
-		ee.setDistrito_id(Integer.parseInt(request.getParameter("distrito_id")));
+		ee.setDistrito_id((request.getParameter("distrito_id")));
 		ee.setClave(request.getParameter("clave"));
-		ee.setEmpleado_id(Integer.parseInt(request.getParameter("empleado_id")));
+		ee.setEmpleado_id((request.getParameter("empleado_id")));
 		InterfaceEmpleado ie = fabrica.getEmpleado();
 		ie.actualizarEmpleado(ee);
 		recuperar(request,response);
@@ -107,12 +106,13 @@ public class ServletEmpleado extends HttpServlet {
 		// TODO Auto-generated method stub
 	InterfaceEmpleado ie = fabrica.getEmpleado();
 	EntityEmpleado ee = new EntityEmpleado();
-	ee.setDistrito_id(Integer.parseInt(request.getParameter("distrito_id")));
+	ee.setDistrito_id((request.getParameter("distrito_id")));
 	ee.setNombre(request.getParameter("nombre"));
 	ee.setApellido(request.getParameter("apellido"));
 	ee.setRol(request.getParameter("rol"));
 	ee.setCorreo(request.getParameter("correo"));
 	ee.setClave(request.getParameter("clave"));
+	ee.setEmpleado_id(request.getParameter("empleado_id"));
 	ie.crearEmpleado(ee);
 	recuperar(request,response);
 	}

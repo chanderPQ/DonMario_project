@@ -1,24 +1,24 @@
 package com.donmario.entitys;
 
 public class EntityEmpleado {
-private int empleado_id;
-private int distrito_id;
+private String empleado_id;
+private String distrito_id;
 private String nombre;
 private String apellido;
 private String rol;
 private String correo;
 private String clave;
 public EntityEmpleado() {}
-public int getEmpleado_id() {
+public String getEmpleado_id() {
 	return empleado_id;
 }
-public void setEmpleado_id(int empleado_id) {
+public void setEmpleado_id(String empleado_id) {
 	this.empleado_id = empleado_id;
 }
-public int getDistrito_id() {
+public String getDistrito_id() {
 	return distrito_id;
 }
-public void setDistrito_id(int distrito_id) {
+public void setDistrito_id(String distrito_id) {
 	this.distrito_id = distrito_id;
 }
 public String getNombre() {

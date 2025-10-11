@@ -18,15 +18,16 @@ public class ModelEmpleado extends DaoDatabase implements InterfaceEmpleado {
 	public void crearEmpleado(EntityEmpleado ee) {
 		// TODO Auto-generated method stub
 		try {
-			String sentencia = "insert into empleado(distrito_id,nombre,apellido,rol,correo,clave) values(?,?,?,?,?,?)";
+			String sentencia = "insert into empleado(distrito_id,nombre,apellido,rol,correo,clave,empleado_id) values(?,?,?,?,?,?,?)";
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
-			ps.setInt(1, ee.getDistrito_id());
+			ps.setString(1, ee.getDistrito_id());
 			ps.setString(2, ee.getNombre());
 			ps.setString(3,ee.getApellido());
 			ps.setString(4, ee.getRol());
 			ps.setString(5, ee.getCorreo());
 			ps.setString(6, ee.getClave());
+			ps.setString(7, ee.getEmpleado_id());
 			ps.executeUpdate();
 		}
 		catch(Exception e) {
@@ -50,8 +51,8 @@ public class ModelEmpleado extends DaoDatabase implements InterfaceEmpleado {
 		    	ee.setRol(rs.getString("rol"));
 		    	ee.setCorreo(rs.getString("correo"));
 		    	ee.setClave(rs.getString("clave"));
-		    	ee.setDistrito_id(rs.getInt("distrito_id"));
-		    	ee.setEmpleado_id(rs.getInt("empleado_id"));
+		    	ee.setDistrito_id(rs.getString("distrito_id"));
+		    	ee.setEmpleado_id(rs.getString("empleado_id"));
 		    	le.add(ee);
 		    }
 		}
@@ -73,8 +74,8 @@ public class ModelEmpleado extends DaoDatabase implements InterfaceEmpleado {
 	        ps.setString(3, ee.getRol());
 	        ps.setString(4, ee.getCorreo());
 	        ps.setString(5, ee.getClave());
-	        ps.setInt(6, ee.getDistrito_id());
-	        ps.setInt(7, ee.getEmpleado_id());
+	        ps.setString(6, ee.getDistrito_id());
+	        ps.setString(7, ee.getEmpleado_id());
 	        ps.executeUpdate();
 		}
 		catch(Exception e) {
@@ -83,13 +84,13 @@ public class ModelEmpleado extends DaoDatabase implements InterfaceEmpleado {
 	}
 
 	@Override
-	public void eliminarEmpleado(int empleado_id) {
+	public void eliminarEmpleado(String empleado_id) {
 		// TODO Auto-generated method stub
 		try {
 			String sentencia = "delete from empleado where empleado_id = ?";
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
-			ps.setInt(1, empleado_id);
+			ps.setString(1, empleado_id);
 			ps.executeUpdate();
 		}catch(Exception e) {
 			System.out.print("hubo un problema con ModelEmpleado.eliminarEmpleado()");
@@ -97,14 +98,14 @@ public class ModelEmpleado extends DaoDatabase implements InterfaceEmpleado {
 	}
 
 	@Override
-	public EntityEmpleado editarEmpleado(int empleado_id) {
+	public EntityEmpleado editarEmpleado(String empleado_id) {
 		// TODO Auto-generated method stub
 		EntityEmpleado ee = new EntityEmpleado();
 		try {
 			String sentencia = "select * from empleado where empleado_id = ?";
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
-			ps.setInt(1, empleado_id);
+			ps.setString(1, empleado_id);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
 		    	ee.setNombre(rs.getString("nombre"));
@@ -112,8 +113,8 @@ public class ModelEmpleado extends DaoDatabase implements InterfaceEmpleado {
 		    	ee.setRol(rs.getString("rol"));
 		    	ee.setCorreo(rs.getString("correo"));
 		    	ee.setClave(rs.getString("clave"));
-		    	ee.setDistrito_id(rs.getInt("distrito_id"));
-		    	ee.setEmpleado_id(rs.getInt("empleado_id"));
+		    	ee.setDistrito_id(rs.getString("distrito_id"));
+		    	ee.setEmpleado_id(rs.getString("empleado_id"));
 			}
 		}
 		catch(Exception e) {

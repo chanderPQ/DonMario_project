@@ -18,7 +18,20 @@
 <main style="padding:20px">
 <form action="ServletMesa" method="post" class="main__mantenimiento" >
 <p>Mantenimiento Mesa</p>
-<input type="hidden" name="empleado_id" value="1" >
+<input type="hidden" name="empleado_id" value="EMP00" >
+<label>Mesa ID: </label>
+
+
+<input type="text" 
+<c:if test="${sessionScope.mesas.size() == null}">
+value="MES00"</c:if>
+<c:if test="${sessionScope.mesas.size() != null}">
+value="MES0${sessionScope.mesas.size()}"
+</c:if>
+ name="mesa_id" placeholder="ingrese el nombre del mesa" readonly>
+
+
+
 <label>Capacidad: </label>
 <input type="text" name="capacidad">
 <label>Estado: </label>

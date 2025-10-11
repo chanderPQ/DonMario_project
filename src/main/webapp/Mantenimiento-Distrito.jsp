@@ -20,6 +20,14 @@
 <main>
 <form class="main__mantenimiento" action="ServletDistrito" method="post">
 <label>nombre del distrito</label>
+<input type="text" 
+<c:if test="${sessionScope.distritos.size() == null}">
+value="DIS00"</c:if>
+<c:if test="${sessionScope.distritos.size() != null}">
+value="DIS0${sessionScope.distritos.size()}"
+</c:if>
+ name="distrito_id" placeholder="ingrese el nombre del distrito" readonly>
+
 <input type="text" name="nombre" placeholder="ingrese el nombre del distrito">
 <input type="submit" name="accion" value="crear">
 </form>

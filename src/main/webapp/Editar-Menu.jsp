@@ -14,10 +14,11 @@
 <p>Mantenimiento Menu</p>
 <form class="main__mantenimiento" action="ServletMenu" method="post">
 <input type="hidden"  name="empleado_id" value="${requestScope.menu.empleado_id }">
-<input type="hidden" name="menu_id" value="${requestScope.menu.menu_id }">
-<label>nombre del menu</label>
+<label>Menu ID</label>
+<input type="text" name="menu_id" value="${requestScope.menu.menu_id }">
+<label>Nombre del menu</label>
 <input type="text" name="nombre" placeholder="ingrese el nombre del plato" value="${requestScope.menu.nombre }">
-<label>costo</label>
+<label>Costo</label>
 <input type="text" name="costo" placeholder="ingrese el costo" value="${requestScope.menu.costo }">
 <input type="submit" name="accion" value="actualizar">
 </form>

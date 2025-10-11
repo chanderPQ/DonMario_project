@@ -53,7 +53,7 @@ public class ServletMesa extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 		InterfaceMesa im = fabrica.getMesa();
-		EntityMesa em =  im.editarMesa(Integer.parseInt(request.getParameter("idEditar")));
+		EntityMesa em =  im.editarMesa((request.getParameter("idEditar")));
 		request.setAttribute("mesa", em);
 		request.getRequestDispatcher("Editar-Mesa.jsp").forward(request, response);
 		}catch(Exception e) {
@@ -78,7 +78,7 @@ public class ServletMesa extends HttpServlet {
 	private void eliminar(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		InterfaceMesa im = fabrica.getMesa();
-		im.eliminarMesa(Integer.parseInt(request.getParameter("idEliminar")));
+		im.eliminarMesa((request.getParameter("idEliminar")));
 		listar(request,response);
 	}
 
@@ -86,8 +86,8 @@ public class ServletMesa extends HttpServlet {
 		// TODO Auto-generated method stub
 		InterfaceMesa im = fabrica.getMesa();
 		EntityMesa em = new EntityMesa();
-		em.setMesa_id(Integer.parseInt(request.getParameter("mesa_id")));
-		em.setEmpleado_id(Integer.parseInt(request.getParameter("empleado_id")));
+		em.setMesa_id((request.getParameter("mesa_id")));
+		em.setEmpleado_id((request.getParameter("empleado_id")));
 		em.setCapacidad(Integer.parseInt(request.getParameter("capacidad")));
 		em.setEstado(request.getParameter("estado"));
 		im.actualizarMesa(em);
@@ -97,9 +97,10 @@ public class ServletMesa extends HttpServlet {
 	private void crear(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 	EntityMesa em = new EntityMesa();
-	em.setEmpleado_id(Integer.parseInt(request.getParameter("empleado_id")));
+	em.setEmpleado_id((request.getParameter("empleado_id")));
 	em.setEstado(request.getParameter("estado"));
 	em.setCapacidad(Integer.parseInt(request.getParameter("capacidad")));
+	em.setMesa_id(request.getParameter("mesa_id"));
 	InterfaceMesa im = fabrica.getMesa();
 	im.crearMesa(em);
 	listar(request,response);

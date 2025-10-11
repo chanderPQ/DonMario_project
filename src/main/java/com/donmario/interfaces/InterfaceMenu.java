@@ -7,7 +7,7 @@ import com.donmario.entitys.EntityMenu;
 public interface InterfaceMenu {
 public void crearMenu(EntityMenu em);
 public ArrayList<EntityMenu> recuperarMenu();
-public EntityMenu editarMenu(int id);
+public EntityMenu editarMenu(String id);
 public void actualizarMenu(EntityMenu em);
-public void eliminarMenu(int id);
+public void eliminarMenu(String id);
 }

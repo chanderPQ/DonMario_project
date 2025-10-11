@@ -20,7 +20,8 @@
 <p>Mantenimiento Distrito</p>
 <main>
 <form class="main__mantenimiento" action="ServletDistrito" method="post">
-<input type="hidden" name="distrito_id" value="${distrito.getDistrito_id() }">
+<label>Distrito ID</label>
+<input type="text" name="distrito_id" value="${distrito.getDistrito_id() }" readonly>
 <label>nombre del distrito</label>
 <input type="text" name="nombre" placeholder="ingrese el nombre del distrito" value="${distrito.getNombre() }">
 <input type="submit" name="accion" value="actualizar">

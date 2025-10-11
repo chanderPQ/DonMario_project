@@ -18,10 +18,11 @@ public ModelDistrito(int database) {
 	public void crearDistrito(EntityDistrito ed) {
 		// TODO Auto-generated method stub
 		try {
-			String sentencia = "insert into distrito(nombre) values(?)";
+			String sentencia = "insert into distrito values(?,?)";
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
-			ps.setString(1, ed.getNombre());
+			ps.setString(1, ed.getDistrito_id());
+			ps.setString(2, ed.getNombre());
 			ps.executeUpdate();
 		}
 		catch(Exception e) {
@@ -40,7 +41,7 @@ public ModelDistrito(int database) {
 			ResultSet rs = ps.executeQuery();
 		    while(rs.next()) {
 		    	EntityDistrito ed = new EntityDistrito();
-		    	ed.setDistrito(rs.getInt(1));
+		    	ed.setDistrito(rs.getString(1));
 		    	ed.setNombre(rs.getString(2));
 		    	ld.add(ed);
 		    }
@@ -59,7 +60,7 @@ public ModelDistrito(int database) {
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
 			ps.setString(1, ed.getNombre());
-			ps.setInt(2,ed.getDistrito_id());
+			ps.setString(2,ed.getDistrito_id());
 			ps.executeUpdate();
 		}
 		catch(Exception e) {
@@ -68,13 +69,13 @@ public ModelDistrito(int database) {
 	}
 
 	@Override
-	public void eliminarDistrito(int distrito_id) {
+	public void eliminarDistrito(String distrito_id) {
 		// TODO Auto-generated method stub
 		try {
 			String sentencia = "delete from distrito where distrito_id = ?";
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
-			ps.setInt(1, distrito_id);
+			ps.setString(1, distrito_id);
 			ps.executeUpdate();
 		}
 		catch(Exception e) {
@@ -83,17 +84,17 @@ public ModelDistrito(int database) {
 	}
 
 	@Override
-	public EntityDistrito editarDistrito(int distrito_id) {
+	public EntityDistrito editarDistrito(String distrito_id) {
 		// TODO Auto-generated method stub
 		EntityDistrito ed = new EntityDistrito();
 		try {
 			String sentencia = "select * from distrito where distrito_id=?";
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
-			ps.setInt(1, distrito_id);
+			ps.setString(1, distrito_id);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				ed.setDistrito(rs.getInt(1));
+				ed.setDistrito(rs.getString(1));
 				ed.setNombre(rs.getString(2));
 			}
 		}

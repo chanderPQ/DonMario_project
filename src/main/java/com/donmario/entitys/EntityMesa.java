@@ -1,17 +1,17 @@
 package com.donmario.entitys;
 
 public class EntityMesa {
-private int mesa_id;
+private String mesa_id;
 private int capacidad;
 private String estado;
-private int empleado_id;
+private String empleado_id;
 public EntityMesa() {
 	
 }
-public int getMesa_id() {
+public String getMesa_id() {
 	return mesa_id;
 }
-public void setMesa_id(int mesa_id) {
+public void setMesa_id(String mesa_id) {
 	this.mesa_id = mesa_id;
 }
 public int getCapacidad() {
@@ -26,10 +26,10 @@ public String getEstado() {
 public void setEstado(String estado) {
 	this.estado = estado;
 }
-public int getEmpleado_id() {
+public String getEmpleado_id() {
 	return empleado_id;
 }
-public void setEmpleado_id(int empleado_id) {
+public void setEmpleado_id(String empleado_id) {
 	this.empleado_id = empleado_id;
 }
 

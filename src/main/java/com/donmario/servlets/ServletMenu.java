@@ -55,7 +55,7 @@ public class ServletMenu extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			InterfaceMenu im = fabrica.getMenu();
-			EntityMenu em = im.editarMenu(Integer.parseInt(request.getParameter("idEditar")));
+			EntityMenu em = im.editarMenu((request.getParameter("idEditar")));
 			request.setAttribute("menu", em);
 		    request.getRequestDispatcher("Editar-Menu.jsp").forward(request, response);
 		}catch(Exception e) {
@@ -67,7 +67,7 @@ public class ServletMenu extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			InterfaceMenu im = fabrica.getMenu();
-			im.eliminarMenu(Integer.parseInt(request.getParameter("idEliminar")));
+			im.eliminarMenu((request.getParameter("idEliminar")));
 	        recuperar(request,response);	
 		}
 		catch(Exception e) {
@@ -79,8 +79,8 @@ public class ServletMenu extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			EntityMenu em = new EntityMenu();
-			em.setEmpleado_id(Integer.parseInt(request.getParameter("empleado_id")));
-			em.setMenu_id(Integer.parseInt(request.getParameter("menu_id")));
+			em.setEmpleado_id((request.getParameter("empleado_id")));
+			em.setMenu_id((request.getParameter("menu_id")));
 			em.setNombre(request.getParameter("nombre"));
 			em.setCosto(Double.parseDouble(request.getParameter("costo")));
 			InterfaceMenu im = fabrica.getMenu();
@@ -111,9 +111,10 @@ public class ServletMenu extends HttpServlet {
 	private void crear(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		EntityMenu em = new EntityMenu();
-	    em.setEmpleado_id(Integer.parseInt(request.getParameter("empleado_id")));
+	    em.setEmpleado_id((request.getParameter("empleado_id")));
 	    em.setNombre(request.getParameter("nombre"));
 	    em.setCosto(Double.parseDouble(request.getParameter("costo")));
+	    em.setMenu_id(request.getParameter("menu_id"));
 	    InterfaceMenu im = fabrica.getMenu();
 	    im.crearMenu(em);
 	    recuperar(request,response);

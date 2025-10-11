@@ -6,6 +6,6 @@ public interface InterfaceDistrito {
 public void crearDistrito(EntityDistrito ed);
 public ArrayList<EntityDistrito> recuperarDistrito();
 public void actualizarDistrito(EntityDistrito ed);
-public void eliminarDistrito(int distrito_id);
-public EntityDistrito editarDistrito(int distrito_id);
+public void eliminarDistrito(String distrito_id);
+public EntityDistrito editarDistrito(String distrito_id);
 }

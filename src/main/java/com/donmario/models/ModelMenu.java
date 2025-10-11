@@ -19,13 +19,14 @@ public class ModelMenu extends DaoDatabase  implements InterfaceMenu{
 	public void crearMenu(EntityMenu em) {
 		// TODO Auto-generated method stub
 		try {
-			String sentencia = "insert into menu(empleado_id,nombre,costo) values(?,?,?)";
+			String sentencia = "insert into menu(empleado_id,nombre,costo,menu_id) values(?,?,?,?)";
 			System.out.print("la base de datos es :"+database);
 		Connection connection = getDaoConnection(database);
 		PreparedStatement ps = connection.prepareStatement(sentencia);
-		ps.setInt(1, em.getEmpleado_id());
+		ps.setString(1, em.getEmpleado_id());
 		ps.setString(2, em.getNombre());
 		ps.setDouble(3, em.getCosto());
+		ps.setString(4, em.getMenu_id());
 		ps.executeUpdate();
 		System.out.print("Menu creado");
 		}
@@ -45,8 +46,8 @@ public class ModelMenu extends DaoDatabase  implements InterfaceMenu{
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				EntityMenu em = new EntityMenu();
-				em.setEmpleado_id(rs.getInt("empleado_id"));
-				em.setMenu_id(rs.getInt("menu_id"));
+				em.setEmpleado_id(rs.getString("empleado_id"));
+				em.setMenu_id(rs.getString("menu_id"));
 				em.setNombre(rs.getString("nombre"));
 				em.setCosto(rs.getDouble("costo"));
 				menus.add(em);
@@ -59,18 +60,18 @@ public class ModelMenu extends DaoDatabase  implements InterfaceMenu{
 	}
 
 	@Override
-	public EntityMenu editarMenu(int id) {
+	public EntityMenu editarMenu(String id) {
 		// TODO Auto-generated method stub
 		EntityMenu em = new EntityMenu();
 		try {
 			String sentencia = "select * from menu where menu_id = ? ";
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
-			ps.setInt(1, id);
+			ps.setString(1, id);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				em.setEmpleado_id(rs.getInt("empleado_id"));
-				em.setMenu_id(rs.getInt("menu_id"));
+				em.setEmpleado_id(rs.getString("empleado_id"));
+				em.setMenu_id(rs.getString("menu_id"));
 				em.setNombre(rs.getString("nombre"));
 				em.setCosto(rs.getDouble("costo"));
 			}
@@ -90,7 +91,7 @@ public class ModelMenu extends DaoDatabase  implements InterfaceMenu{
 			PreparedStatement ps = connection.prepareStatement(sentencia);
 			ps.setString(1, em.getNombre());
 			ps.setDouble(2, em.getCosto());
-			ps.setInt(3, em.getMenu_id());
+			ps.setString(3, em.getMenu_id());
 			ps.executeUpdate();	
 		}
 		catch(Exception e) {
@@ -99,13 +100,13 @@ public class ModelMenu extends DaoDatabase  implements InterfaceMenu{
 	}
 
 	@Override
-	public void eliminarMenu(int id) {
+	public void eliminarMenu(String id) {
 		// TODO Auto-generated method stub
 		try {
 			String sentencia = "delete from menu where menu_id = ? ";
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
-			ps.setInt(1, id);
+			ps.setString(1, id);
 			ps.executeUpdate();
 		}
 		catch(Exception e) {

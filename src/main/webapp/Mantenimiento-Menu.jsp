@@ -18,10 +18,23 @@
 <main style="padding:20px;">
 <p>Mantenimiento Menu</p>
 <form class="main__mantenimiento" action="ServletMenu" method="post">
-<input type="hidden" name="empleado_id" value="1">
-<label>nombre del menu</label>
+
+<label>Menu ID</label>
+
+<input type="text" 
+<c:if test="${sessionScope.menus.size() == null}">
+value="MEN00"</c:if>
+<c:if test="${sessionScope.menus.size() != null}">
+value="MEN0${sessionScope.menus.size()}"
+</c:if>
+ name="menu_id" placeholder="ingrese el nombre del menu" readonly>
+
+
+
+<input type="hidden" name="empleado_id" value="EMP00">
+<label>Nombre del menu</label>
 <input type="text" name="nombre" placeholder="ingrese el nombre del plato">
-<label>costo</label>
+<label>Costo</label>
 <input type="text" name="costo" placeholder="ingrese el costo">
 <input type="submit" name="accion" value="crear">
 </form>
@@ -31,7 +44,7 @@
 <td class="table-dark">Menu ID</td>
 <td class="table-dark">Nombre del menu</td>
 <td class="table-dark">Costo</td>
-<td class="table-dark">Empleado ID</td>
+<td class="table-dark">Actualizado por:</td>
 <td class="table-dark">Acciones</td>
 </tr>
 

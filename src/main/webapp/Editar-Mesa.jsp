@@ -14,8 +14,9 @@
 <main style="padding:20px">
 <form action="ServletMesa" method="post" class="main__mantenimiento" >
 <p>Mantenimiento Mesa</p>
-<input type="hidden" name="mesa_id" value="${mesa.mesa_id }" >
-<input type="hidden" name="empleado_id" value="1" >
+<label>Mesa ID: </label>
+<input type="text" name="mesa_id" value="${mesa.mesa_id }" readonly >
+<input type="hidden" name="empleado_id" value="${mesa.empleado_id }" >
 <label>Capacidad: </label>
 <input type="text" name="capacidad" value="${mesa.capacidad }">
 <label>Estado: </label>

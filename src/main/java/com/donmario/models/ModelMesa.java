@@ -15,12 +15,13 @@ public class ModelMesa extends DaoDatabase implements InterfaceMesa {
 	public void crearMesa(EntityMesa em) {
 		// TODO Auto-generated method stub
 	try {
-		String sentencia = "insert into mesa (empleado_id,capacidad,estado) values(?,?,?) ";
+		String sentencia = "insert into mesa (empleado_id,capacidad,estado,mesa_id) values(?,?,?,?) ";
 		Connection connection = getDaoConnection(database);
 		PreparedStatement ps = connection.prepareStatement(sentencia);
-		ps.setInt(1,em.getEmpleado_id());
+		ps.setString(1,em.getEmpleado_id());
 		ps.setInt(2, em.getCapacidad());
 		ps.setString(3, em.getEstado());
+		ps.setString(4, em.getMesa_id());
 		ps.executeUpdate();
 	}
 	catch(Exception e) {
@@ -39,8 +40,8 @@ public class ModelMesa extends DaoDatabase implements InterfaceMesa {
 			ResultSet rs = ps.executeQuery(); 
 			while(rs.next()) {
 				EntityMesa em = new EntityMesa();
-				em.setMesa_id(rs.getInt("mesa_id"));
-				em.setEmpleado_id(rs.getInt("empleado_id"));
+				em.setMesa_id(rs.getString("mesa_id"));
+				em.setEmpleado_id(rs.getString("empleado_id"));
 				em.setEstado(rs.getString("estado"));
 				em.setCapacidad(rs.getInt("capacidad"));
 				mesas.add(em);
@@ -60,10 +61,10 @@ public class ModelMesa extends DaoDatabase implements InterfaceMesa {
 			String sentencia = "update mesa set empleado_id=?, capacidad=?, estado=? where mesa_id=? ";
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
-			ps.setInt(1, em.getEmpleado_id());
+			ps.setString(1, em.getEmpleado_id());
 			ps.setInt(2, em.getCapacidad());
 			ps.setString(3, em.getEstado());
-			ps.setInt(4, em.getMesa_id());
+			ps.setString(4, em.getMesa_id());
 			ps.executeUpdate();
 		}
 		catch(Exception e) {
@@ -72,13 +73,13 @@ public class ModelMesa extends DaoDatabase implements InterfaceMesa {
 	}
 
 	@Override
-	public void eliminarMesa(int mesa_id) {
+	public void eliminarMesa(String mesa_id) {
 		// TODO Auto-generated method stub
 		try {
 		String sentencia = "delete from mesa where mesa_id=?";
 		Connection connection = getDaoConnection(database);
 		PreparedStatement ps = connection.prepareStatement(sentencia);
-		ps.setInt(1, mesa_id);
+		ps.setString(1, mesa_id);
 		ps.executeUpdate();
 		}
 		catch(Exception e) {
@@ -87,18 +88,18 @@ public class ModelMesa extends DaoDatabase implements InterfaceMesa {
 	}
 
 	@Override
-	public EntityMesa editarMesa(int mesa_id) {
+	public EntityMesa editarMesa(String mesa_id) {
 		// TODO Auto-generated method stub
 		EntityMesa em = new EntityMesa();
 		try {
 			String sentencia = "select * from mesa where mesa_id=?";
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
-			ps.setInt(1, mesa_id);
+			ps.setString(1, mesa_id);
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
-				em.setMesa_id(rs.getInt("mesa_id"));
-				em.setEmpleado_id(rs.getInt("empleado_id"));
+				em.setMesa_id(rs.getString("mesa_id"));
+				em.setEmpleado_id(rs.getString("empleado_id"));
 				em.setEstado(rs.getString("estado"));
 				em.setCapacidad(rs.getInt("capacidad"));
 			}
