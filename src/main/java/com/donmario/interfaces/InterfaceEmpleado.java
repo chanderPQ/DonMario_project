@@ -10,4 +10,5 @@ public ArrayList<EntityEmpleado> recuperarEmpleado();
 public void actualizarEmpleado(EntityEmpleado ee);
 public void eliminarEmpleado(String empleado_id);
 public EntityEmpleado editarEmpleado(String empleado_id);
+public EntityEmpleado accederEmpleado(String correo, String clave);
 }

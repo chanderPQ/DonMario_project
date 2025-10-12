@@ -15,6 +15,15 @@
 <link rel="stylesheet" href="Mantenimiento-Menu.css">
 </head>
 <body>
+
+<nav>
+<div><img alt="" src="https://pbs.twimg.com/profile_images/1904526155765481472/TcKKw0k9_400x400.jpg" width="150px"></div>   
+<div><a href="Mantenimiento.jsp" class="nav_item">🛠 Mantenimiento</a></div>
+<div><a href="Consultas.jsp" class="nav_item" >🔎 Consultas</a></div>
+<div><a href="Reportes.jsp" class="nav_item" >📊 Reportes</a></div>
+<div><a href="Pedidos.jsp" class="nav_item" >📩 Pedidos</a></div>
+<div><a href="Detalle-Cuenta.jsp" class="nav_item" >👤 Cuenta</a></div>
+</nav>
 <main style="padding:20px;">
 <p>Mantenimiento Menu</p>
 <form class="main__mantenimiento" action="ServletMenu" method="post">

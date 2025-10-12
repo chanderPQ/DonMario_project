@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,6 +9,7 @@
 <link rel="stylesheet" href="Mantenimiento-Menu.css">
 </head>
 <body>
+
 <nav>
 <div><img alt="" src="https://pbs.twimg.com/profile_images/1904526155765481472/TcKKw0k9_400x400.jpg" width="150px"></div>   
 <div><a href="Mantenimiento.jsp" class="nav_item">🛠 Mantenimiento</a></div>
@@ -18,19 +18,20 @@
 <div><a href="Pedidos.jsp" class="nav_item" >📩 Pedidos</a></div>
 <div><a href="Detalle-Cuenta.jsp" class="nav_item" >👤 Cuenta</a></div>
 </nav>
+<main style="display:flex;flex-direction:column;justify-content:center; align-items:center">
+<p style="text-aling:center;font-size:30px">Mantenimiento</p><br>
+<div 
+style="display:grid;
+grid-template-columns: 230px 230px;
+gap:50px;
 
-<main style="padding:20px;">
-<p>Mantenimiento Menu</p>
-<form class="main__mantenimiento" action="ServletMenu" method="post">
-<input type="hidden"  name="empleado_id" value="${requestScope.menu.empleado_id }">
-<label>Menu ID</label>
-<input type="text" name="menu_id" value="${requestScope.menu.menu_id }">
-<label>Nombre del menu</label>
-<input type="text" name="nombre" placeholder="ingrese el nombre del plato" value="${requestScope.menu.nombre }">
-<label>Costo</label>
-<input type="text" name="costo" placeholder="ingrese el costo" value="${requestScope.menu.costo }">
-<input type="submit" name="accion" value="actualizar">
-</form>
+">
+<a href="Mantenimiento-Distrito.jsp" class="pestanas"><p>🌃</p> Distritos</a>
+<a href="Mantenimiento-Empleado.jsp" class="pestanas" ><p>👷‍♂️</p> Empleados</a>
+<a href="Mantenimiento-Menu.jsp" class="pestanas" ><p>🍜</p> Menus</a>
+<a href="Mantenimiento-Mesa.jsp" class="pestanas" ><p>🪑</p> Mesas</a>
+</div>
+
 </main>
 </body>
 </html>

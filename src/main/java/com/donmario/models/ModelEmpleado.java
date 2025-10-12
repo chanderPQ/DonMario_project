@@ -122,5 +122,31 @@ public class ModelEmpleado extends DaoDatabase implements InterfaceEmpleado {
 		}
 		return ee;
 	}
+	@Override
+	public EntityEmpleado accederEmpleado(String correo, String clave) {
+		// TODO Auto-generated method stub
+		EntityEmpleado ee = new EntityEmpleado();
+		try {
+			String sentencia = "select * from empleado where correo = ? and clave = ? ";
+			Connection connection = getDaoConnection(database);
+			PreparedStatement ps = connection.prepareStatement(sentencia);
+			ps.setString(1, correo);
+			ps.setString(2, clave);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				ee.setNombre(rs.getString("nombre"));
+		    	ee.setApellido(rs.getString("apellido"));
+		    	ee.setRol(rs.getString("rol"));
+		    	ee.setCorreo(rs.getString("correo"));
+		    	ee.setClave(rs.getString("clave"));
+		    	ee.setDistrito_id(rs.getString("distrito_id"));
+		    	ee.setEmpleado_id(rs.getString("empleado_id"));
+			}
+		}
+		catch(Exception e) {
+			System.out.print("hubo un problema con ModelEmpleado.accederEmpleado()");
+		}
+		return ee;
+	}
 
 }

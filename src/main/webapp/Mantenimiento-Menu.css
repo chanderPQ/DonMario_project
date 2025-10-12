@@ -21,3 +21,32 @@
 .mantenimiento-sign p{
 	text-align: center;
 }
+body{
+	display: grid;
+	grid-template-columns: minmax(230px,0.17fr) 0.83fr;
+}
+nav{
+	position:sticky;
+	top:0;
+	display: flex;
+	flex-direction:column;
+	align-items:center;
+	background-color:#18e;
+	color:white;
+	height:100vh;
+	row-gap:30px;
+	padding-top:40px;
+}
+.nav_item{
+	text-decoration:none;
+	color:#fff;
+}
+nav div{
+	width:80%;
+}
+.pestanas{
+	font-size:30px;border:#000a solid 2px; text-align:center;border-radius:20px ; padding: 50px" 
+}
+.pestanas span{
+	
+}

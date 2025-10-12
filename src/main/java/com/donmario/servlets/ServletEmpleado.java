@@ -42,11 +42,40 @@ public class ServletEmpleado extends HttpServlet {
     	 case "actualizar" -> actualizar(request,response);
     	 case "eliminar" -> eliminar(request,response);
     	 case "editar" -> editar(request,response);
+    	 case "acceder" -> acceder(request,response);
+    	 case "cerrar session" -> cerrarSession(request,response);
     	 }
      }
      else {
     	 recuperar(request,response);
      }
+	}
+
+	private void cerrarSession(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		try {
+			HttpSession session = request.getSession();
+			session.invalidate();
+			request.getRequestDispatcher("Iniciar-sesion.jsp").forward(request, response);
+		}catch(Exception e) {
+			System.out.print("hubo un problema con ServletEmpleado.acceder()");
+		}
+	}
+
+	private void acceder(HttpServletRequest request, HttpServletResponse response) {
+		// TODO Auto-generated method stub
+		try {
+		InterfaceEmpleado im = fabrica.getEmpleado();
+	EntityEmpleado ee =	im.accederEmpleado(
+			request.getParameter("correo"),
+			request.getParameter("clave")
+			);
+	HttpSession session = request.getSession();
+	session.setAttribute("cuenta", ee);
+	request.getRequestDispatcher("Detalle-Cuenta.jsp").forward(request, response);
+		}catch(Exception e) {
+			System.out.print("hubo un problema con ServletEmpleado.acceder()");
+		}
 	}
 
 	private void editar(HttpServletRequest request, HttpServletResponse response) {
@@ -74,6 +103,7 @@ public class ServletEmpleado extends HttpServlet {
 
 	private void actualizar(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		try {
 		EntityEmpleado ee = new EntityEmpleado();
 		ee.setNombre(request.getParameter("nombre"));
 		ee.setApellido(request.getParameter("apellido"));
@@ -84,7 +114,17 @@ public class ServletEmpleado extends HttpServlet {
 		ee.setEmpleado_id((request.getParameter("empleado_id")));
 		InterfaceEmpleado ie = fabrica.getEmpleado();
 		ie.actualizarEmpleado(ee);
+		HttpSession session = request.getSession();
+		String pagina = (String)session.getAttribute("pagina");
+		if(pagina.equals("Detalle-Cuenta.jsp")) {
+			session.invalidate();
+			request.getRequestDispatcher("Iniciar-sesion.jsp").forward(request, response);
+		}
+		else {
 		recuperar(request,response);
+		}}catch(Exception e) {
+			System.out.print("hubo un problema con ServletEmpleado.actualizar()");
+		}
 	}
 
 	private void recuperar(HttpServletRequest request, HttpServletResponse response) {
