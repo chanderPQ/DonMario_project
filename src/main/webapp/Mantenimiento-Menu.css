@@ -23,7 +23,7 @@
 }
 body{
 	display: grid;
-	grid-template-columns: minmax(230px,0.17fr) 0.83fr;
+	grid-template-columns: minmax(230px,0.17fr) auto;
 }
 nav{
 	position:sticky;

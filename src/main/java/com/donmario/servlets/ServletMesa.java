@@ -69,7 +69,7 @@ public class ServletMesa extends HttpServlet {
 	HttpSession session = request.getSession();
 	session.setAttribute("mesas", lm);
 	String pagina = (String)session.getAttribute("pagina");
-	request.getRequestDispatcher("Mantenimiento-Mesa.jsp").forward(request, response);
+	request.getRequestDispatcher(pagina).forward(request, response);
 		}catch(Exception e) {
 			System.out.print("HUBO UN PROBLEMA CON ModelMesa.listar()");
 		}
