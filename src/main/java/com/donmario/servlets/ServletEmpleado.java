@@ -70,10 +70,17 @@ public class ServletEmpleado extends HttpServlet {
 			request.getParameter("correo"),
 			request.getParameter("clave")
 			);
+	if(ee.getApellido()!=null) {
 	HttpSession session = request.getSession();
 	session.setAttribute("cuenta", ee);
 	request.getRequestDispatcher("Detalle-Cuenta.jsp").forward(request, response);
-		}catch(Exception e) {
+	}
+	
+	else if(ee.getApellido()==null) {
+		request.setAttribute("mensaje", "❌ El correo o clave son incorrectos");	
+	    request.getRequestDispatcher("Iniciar-sesion.jsp").forward(request, response);	
+	}
+	}catch(Exception e) {
 			System.out.print("hubo un problema con ServletEmpleado.acceder()");
 		}
 	}

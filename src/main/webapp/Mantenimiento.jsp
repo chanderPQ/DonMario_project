@@ -19,7 +19,7 @@
 <div><a href="Detalle-Cuenta.jsp" class="nav_item" >👤 Cuenta</a></div>
 </nav>
 <main style="display:flex;flex-direction:column;justify-content:center; align-items:center">
-<p style="text-aling:center;font-size:30px">Mantenimiento</p><br>
+<h1 style="text-aling:center;">Mantenimiento 🛠</h1><br><br>
 <div 
 style="display:grid;
 grid-template-columns: 230px 230px;

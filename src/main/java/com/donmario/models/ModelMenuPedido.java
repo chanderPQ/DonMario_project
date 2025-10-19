@@ -35,16 +35,17 @@ public class ModelMenuPedido extends DaoDatabase implements InterfaceMenuPedido 
 		// TODO Auto-generated method stub
 		ArrayList<EntityMenuPedido> lmp = new ArrayList<>();
 		try {
-			String sentencia = "select * from menu_pedido where pedido_id=?";
+			String sentencia = "select pedido_id , menu.menu_id , nombre, cantidad from menu_pedido inner join menu on menu_pedido.menu_id=menu.menu_id where pedido_id = ? ";
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
 			ps.setString(1, pedido_id);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()) {
 				EntityMenuPedido emp = new EntityMenuPedido();
-				emp.setMenu_id(rs.getString("menu_id"));
+				emp.setMenu_id(rs.getString("menu.menu_id"));
 				emp.setPedido_id(rs.getString("pedido_id"));
 				emp.setCantidad(rs.getInt("cantidad"));
+				emp.setNombre(rs.getString("nombre"));
 				lmp.add(emp);
 			}
 		}
@@ -89,7 +90,7 @@ public class ModelMenuPedido extends DaoDatabase implements InterfaceMenuPedido 
 		// TODO Auto-generated method stub
 		EntityMenuPedido emp = new EntityMenuPedido();
 		try {
-			String sentencia = "select * from menu_pedido where menu_id=? and pedido_id=?";
+		String sentencia ="	select pedido_id , menu.menu_id , nombre, cantidad from menu_pedido inner join menu on menu_pedido.menu_id=menu.menu_id where menu_pedido.menu_id=? and menu_pedido.pedido_id=?"; 
 			Connection connection = getDaoConnection(database);
 			PreparedStatement ps = connection.prepareStatement(sentencia);
 			ps.setString(1, menu_id);
@@ -99,6 +100,7 @@ public class ModelMenuPedido extends DaoDatabase implements InterfaceMenuPedido 
 				emp.setMenu_id(rs.getString("menu_id"));
 				emp.setPedido_id(rs.getString("pedido_id"));
 				emp.setCantidad(rs.getInt("cantidad"));
+				emp.setNombre(rs.getString("nombre"));
 			}
 		}
 		catch(Exception e) {

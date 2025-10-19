@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="pagina" value="Menu-Pedido.jsp" scope="session"/>
+<c:if test="${ requestScope.loadDetalle==null }">
+<c:set var="loadDetalle" value="1" scope="request"/>
+<jsp:forward page="ServletMenuPedido?accion=leer&pedido_idDetalle=${requestScope.pedido.pedido_id }"/>
+</c:if>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,20 +26,22 @@
 </nav>
 <main style="padding:20px;">
 <p>Detalle del Pedido</p>
-<form class="main__mantenimiento" action="ServletMenuPedido" method="post">
+<br>
+<table class="table table-striped table-hover">
+<tr>
+<td class="table-dark">Pedido ID</td>
+<td class="table-dark">Menu ID</td>
+<td class="table-dark">Cantidad</td>
+</tr>
 
-<label>Pedido ID:</label>
-
-<input type="text" name="pedido_id" value="${sessionScope.menupedido.pedido_id }" readonly>
-<label>Menu pedido:</label>
-
-<input type="hidden" value="${sessionScope.menupedido.menu_id }" name="menu_id" readonly/>
-<input type="text" value="${sessionScope.menupedido.nombre }" readonly/>
-
-<label>Cantidad:</label>
-<input type="text" name="cantidad" value="${sessionScope.menupedido.cantidad }" placeholder="ingrese la cantidad">
-<input type="submit" name="accion" value="actualizar">
-</form>
+<c:forEach items="${requestScope.menupedidos }" var="item">
+<tr>
+<td>${item.pedido_id }</td>
+<td>${item.menu_id }</td>
+<td>${item.cantidad }</td>
+</tr>
+</c:forEach>
+</table>
 </main>
 </body>
 </html>

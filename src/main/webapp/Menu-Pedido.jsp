@@ -26,6 +26,8 @@
 </nav>
 <main style="padding:20px;">
 <p>Detalle del Pedido</p>
+<c:if test="${requestScope.pedido.estado== 'en preparacion' }">
+
 <form class="main__mantenimiento" action="ServletMenuPedido" method="post">
 
 <label>Pedido ID:</label>
@@ -42,22 +44,30 @@
 <input type="submit" name="accion" value="crear">
 </form>
 <br>
+</c:if>
+
 <table class="table table-striped table-hover">
 <tr>
 <td class="table-dark">Pedido ID</td>
 <td class="table-dark">Menu ID</td>
+<td class="table-dark">Nombre Menu</td>
 <td class="table-dark">Cantidad</td>
+<c:if test="${requestScope.pedido.estado== 'en preparacion' }">
 <td class="table-dark">Acciones</td>
+</c:if>
 </tr>
 
 <c:forEach items="${requestScope.menupedidos }" var="item">
 <tr>
 <td>${item.pedido_id }</td>
 <td>${item.menu_id }</td>
+<td>${item.nombre }</td>
 <td>${item.cantidad }</td>
+<c:if test="${requestScope.pedido.estado== 'en preparacion' }">
 <td>
 <a href="ServletMenuPedido?accion=editar&pedido_idEditar=${item.pedido_id}&menu_idEditar=${item.menu_id}" class="btn btn-primary">Editar</a>
 <a href="ServletMenuPedido?accion=eliminar&pedido_idEliminar=${item.pedido_id}&menu_idEliminar=${item.menu_id}" class="btn btn-danger">Eliminar</a></td>
+</c:if>
 </tr>
 </c:forEach>
 </table>

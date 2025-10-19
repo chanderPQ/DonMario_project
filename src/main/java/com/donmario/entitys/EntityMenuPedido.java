@@ -5,6 +5,7 @@ public class EntityMenuPedido
 	private String menu_id;
 	private String pedido_id;
 	private int cantidad;
+	private String nombre;
 	public EntityMenuPedido() 
 	{
 	}
@@ -26,5 +27,11 @@ public class EntityMenuPedido
 	public void setCantidad(int cantidad) {
 		this.cantidad = cantidad;
 	}
-	
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 }

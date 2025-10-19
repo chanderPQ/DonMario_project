@@ -15,6 +15,7 @@
             <input type="email" placeholder="enter your email" name="correo" >
             <input type="password" placeholder="enter your password" name="clave">
             <input type="submit" value="acceder" name="accion">
+            <label>${requestScope.mensaje }</label>
       </form>
    </main>
 </body>

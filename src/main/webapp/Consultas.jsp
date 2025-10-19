@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<c:set var="pagina" value="Menu-Pedido.jsp" scope="session"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,22 +18,18 @@
 <div><a href="Pedidos.jsp" class="nav_item" >📩 Pedidos</a></div>
 <div><a href="Detalle-Cuenta.jsp" class="nav_item" >👤 Cuenta</a></div>
 </nav>
-<main style="padding:20px;">
-<p>Detalle del Pedido</p>
-<form class="main__mantenimiento" action="ServletMenuPedido" method="post">
+<main style="display:flex;flex-direction:column;justify-content:center; align-items:center">
+<h1 style="text-aling:center;">Consultar 🔎</h1><br><br>
+<div 
+style="display:grid;
+grid-template-columns: 230px 230px;
+gap:50px;
 
-<label>Pedido ID:</label>
+">
+<a href="Consulta-Pedido.jsp" class="pestanas" ><p>📩</p> Pedidos</a>
+<a href="Consulta-Mesa.jsp" class="pestanas" ><p>🪑</p> Mesas</a>
+</div>
 
-<input type="text" name="pedido_id" value="${sessionScope.menupedido.pedido_id }" readonly>
-<label>Menu pedido:</label>
-
-<input type="hidden" value="${sessionScope.menupedido.menu_id }" name="menu_id" readonly/>
-<input type="text" value="${sessionScope.menupedido.nombre }" readonly/>
-
-<label>Cantidad:</label>
-<input type="text" name="cantidad" value="${sessionScope.menupedido.cantidad }" placeholder="ingrese la cantidad">
-<input type="submit" name="accion" value="actualizar">
-</form>
 </main>
 </body>
 </html>

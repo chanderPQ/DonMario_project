@@ -58,7 +58,9 @@ public class ServletPedido extends HttpServlet {
 		   InterfacePedido ip = fabrica.getPedido();
 		EntityPedido ep =  ip.editarPedido(request.getParameter("idDetalle"));
 		request.setAttribute("pedido", ep);
-		request.getRequestDispatcher("Menu-Pedido.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		String pagina = (String)session.getAttribute("pagina");
+		request.getRequestDispatcher("Consulta-Pedido-Menu.jsp").forward(request, response);
 		   }catch(Exception e) {
 				System.out.print("HUBO UN PROBLEMA CON ServletPedido.detalle()");
 		   }
